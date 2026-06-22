@@ -1,0 +1,28 @@
+2025-03-05 02:03:32: Array
+(
+    [success] => 
+    [message] => Usuario/Clave Incorrecto
+    [redirect] => loginAdmin.html
+    [data] => 
+)
+
+2025-03-05 02:03:49: Array
+(
+    [success] => 1
+    [message] => Login correcto
+    [redirect] => ./template_admin/principal_admin.php
+    [data] => 
+)
+
+2025-03-05 02:04:15: Array
+(
+    [success] => 
+    [message] => Usuario/Clave Incorrecto
+    [redirect] => loginAdmin.html
+    [data] => 
+)
+
+2025-04-20 21:10:24: Unknown column 'c.nombre_jornada_curso' in 'field list'
+2025-04-20 21:10:32: Unknown column 'c.nombre_jornada_curso' in 'field list'
+2025-04-20 21:10:40: Unknown column 'c.nombre_jornada_curso' in 'field list'
+2025-04-20 21:15:38: Unknown column 'c.nombre_jornada_curso' in 'field list'
