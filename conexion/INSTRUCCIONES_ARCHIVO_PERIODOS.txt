@@ -1,0 +1,129 @@
+================================================================================
+INSTRUCCIONES: IMPLEMENTACION DEL SISTEMA DE ARCHIVO DE PERIODOS LECTIVOS
+================================================================================
+
+DESCRIPCION DEL SISTEMA
+=======================
+Este sistema crea un proceso automatico que:
+1. Respalda los datos de estudiantes cuando se procesa (cierra) un periodo lectivo.
+2. Archiva la informacion de `estudiantes`, `est_datos` y `jornada_curso` en tablas historicas.
+3. Reasigna `est_datos.dtest_ciclo_datos` al periodo que quede en estado `ACTIVO`.
+4. Reasigna `jornada_curso.id_periodo_lectivo` al mismo periodo `ACTIVO`.
+5. Cambia automaticamente el estado del periodo procesado a `CERRADO`.
+6. Permite mantener historial de periodos anteriores sin perder la informacion del periodo cerrado.
+
+PASOS DE IMPLEMENTACION
+=======================
+
+PASO 1: EJECUTAR EL SCRIPT SQL
+------------------------------
+1. Abre phpMyAdmin en tu navegador.
+
+2. Selecciona tu base de datos.
+
+3. Ve a la pestana "SQL".
+
+4. Abre el archivo `conexion/crear_tablas_historial.sql`.
+   - Copia todo el contenido.
+   - Pegalo en el area SQL.
+   - Haz clic en "Ejecutar".
+
+El script creara:
+  - `estudiantes_historial`
+  - `est_datos_historial`
+  - `jornada_curso_historial`
+  - `sp_procesar_periodo_lectivo`
+
+PASO 2: VERIFICAR LA CREACION
+-----------------------------
+Despues de ejecutar el script, verifica que existan:
+  - `estudiantes_historial`
+  - `est_datos_historial`
+  - `jornada_curso_historial`
+
+Tambien verifica que exista el procedimiento:
+  - `sp_procesar_periodo_lectivo`
+
+PASO 3: COMO FUNCIONA
+---------------------
+Cuando haces clic en "Procesar" dentro de Periodos Lectivos:
+
+A. El sistema valida que el periodo a cerrar exista.
+
+B. Busca otro periodo lectivo con estado `ACTIVO`.
+   - Si no existe otro periodo activo, el cierre se cancela.
+
+C. Ejecuta `sp_procesar_periodo_lectivo`, que:
+   1. Detecta las jornadas/cursos del periodo que se esta cerrando.
+   2. Copia esas jornadas a `jornada_curso_historial`.
+   3. Copia los estudiantes a `estudiantes_historial`.
+   4. Copia los datos de estudiantes a `est_datos_historial`.
+   5. Actualiza `est_datos.dtest_ciclo_datos` con el ID del periodo que sigue activo.
+   6. Actualiza `jornada_curso.id_periodo_lectivo` con ese mismo ID.
+   7. Actualiza `jornada_curso.periodo` con la descripcion del periodo activo destino.
+   8. Cambia el periodo procesado a `CERRADO`.
+
+ESTRUCTURA DE LAS TABLAS HISTORICAS
+===================================
+
+`estudiantes_historial`
+- Contiene los campos de `estudiantes`.
+- Agrega `id_periodo_lectivo`.
+- Agrega `fecha_archivo`.
+
+`est_datos_historial`
+- Contiene los campos de `est_datos`.
+- Agrega `id_periodo_lectivo`.
+- Agrega `fecha_archivo`.
+
+`jornada_curso_historial`
+- Contiene los campos de `jornada_curso`.
+- Agrega `id_periodo_lectivo`.
+- Agrega `fecha_archivo`.
+
+CONSULTAS UTILES
+================
+
+-- Ver estudiantes archivados de un periodo
+SELECT * FROM estudiantes_historial WHERE id_periodo_lectivo = [ID_PERIODO];
+
+-- Ver datos archivados de un periodo
+SELECT * FROM est_datos_historial WHERE id_periodo_lectivo = [ID_PERIODO];
+
+-- Ver jornadas archivadas de un periodo
+SELECT * FROM jornada_curso_historial WHERE id_periodo_lectivo = [ID_PERIODO];
+
+ARCHIVOS CLAVE
+==============
+
+1. `conexion/crear_tablas_historial.sql`
+   - Crea las tablas historicas.
+   - Crea el procedimiento almacenado completo.
+
+2. `conexion/corregir_procedimiento_archivo.sql`
+   - Reemplaza el procedimiento por la version corregida.
+   - Crea `jornada_curso_historial` si todavia no existe.
+
+3. `template_admin/actualizar_estado_periodo.php`
+   - Ejecuta el procedimiento cuando el periodo se procesa como `CERRADO`.
+
+NOTAS IMPORTANTES
+=================
+
+- Antes de cerrar un periodo, debe existir otro periodo en estado `ACTIVO`.
+- El procedimiento usa transacciones; si falla algo, se revierte todo.
+- Conviene hacer backup de la base antes de ejecutar cambios estructurales.
+
+SOLUCION DE PROBLEMAS
+=====================
+
+Problema: "Procedimiento no encontrado"
+Solucion: Ejecuta nuevamente `conexion/crear_tablas_historial.sql` o `conexion/corregir_procedimiento_archivo.sql`.
+
+Problema: "No existe otro periodo lectivo en estado ACTIVO para reasignar los datos"
+Solucion: Activa primero el nuevo periodo lectivo y luego cierra el periodo anterior.
+
+Problema: "Error en el procedimiento. Transaccion revertida."
+Solucion: Revisa que las tablas historicas existan y que el periodo tenga datos asociados.
+
+================================================================================

@@ -1,0 +1,213 @@
+.navbar-collapse{
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sdw{
+    color:rgb(21, 18, 224);
+}
+
+#sd1:hover{
+    color:gray;
+}
+
+#sdw:hover{
+    color:gray;
+}
+
+.hero{
+    background-color: #f5f6f7;
+    min-height: 450px;
+    text-align: center;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.hero-principal{
+    padding: 3rem;
+}
+
+.hero-imagen{
+    width: 200px;
+    height: 200px;
+    border-radius: 23%;
+    margin: 20px
+}
+
+.hero-principal h2{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.seccion-oscura{
+    color: white;
+    background-color: #1b1b32;
+}
+
+.sobre-nosotros{
+    height: 500px;
+    padding: 10px;
+}
+
+.sobre-nosotros .contenedor{
+    max-width: 600px;
+    text-align: center;
+
+}
+
+.seccion-titulo{
+    font-size: 2rem;
+    padding: 25px,0;
+    margin-top: 10px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.seccion-texto{
+    font-size: 2rem;
+     
+}
+
+.mision{
+    padding: 40px 40px 60px 40px;
+}
+
+
+
+.mision-titulo{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.mision i {
+    font-size: 2.5rem;
+    color: #7ade30;
+    background-color: #0a0a23;
+    padding: 8px 19px;
+    border-radius: 50%;
+}
+
+.mision .columna{
+    padding: 20px;
+    border: 2px solid #8080804d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.25 ease-in;
+}
+
+.mision .columna:hover{
+    color: white;
+    background-color: #1b1b32;
+}
+
+
+.directiva{
+    padding: 40px 40px 80px 40px
+}
+
+.directiva .carousel{
+    max-width: 800px;
+}
+
+.uno{
+    height: 500px;
+}
+
+.directiva-imagen{
+    height: 150px;
+    width: 150px;
+    margin: 10px 10px 20px 10px;
+}
+
+.uno .dos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.directiva-texto{
+    max-width: 70%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.directiva-info p{
+    margin-bottom: 0;
+}
+
+.directiva-info .nombredirec{
+    font-size: 1.2rem;
+}
+
+.directiva-info .cargo{
+    font-size: 0.9rem;
+    color: #656060;
+}
+
+
+.contacto .container{
+
+    max-width: 1110px;
+    min-height: 200px;
+    padding: 20px;
+}
+
+.contacto .rectangulo{
+    margin-top: -5rem;
+    background-color: rgb(13,110,253);
+    border-radius: 10px;
+    box-shadow: 0px 1px 4px 1px white;
+}
+
+.contacto .row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.contacto .descripcion{
+    color: white;
+    font-size: 1.2rem;
+
+}
+
+.contacto button{
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid white;
+    padding: 1.25em 2em;
+    margin: 10px;
+    border-radius: 100px;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.contacto button i{
+    color: white;
+    font-size: 1.3rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.contacto button:hover{
+    background-color: white;
+    color: black;
+}
+
+.contacto button:hover i{
+    color: black;
+}

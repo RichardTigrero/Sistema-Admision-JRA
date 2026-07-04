@@ -1,0 +1,30 @@
+.xd{
+    border-radius: 50%;
+    background-color: rgb(22, 102, 223);
+    border-color: rgb(22, 102, 223);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.xd:hover{
+    background-color: white;
+    border-color: rgb(22, 102, 223);
+    color: rgb(22, 102, 223);
+}
+.navbar{
+    padding: 2rem;
+}
+
+img{
+    height: 7rem;
+
+}
+
+i{
+    color: white;
+}
+
+.hello{
+    color: rgb(180, 115, 185);
+}
+

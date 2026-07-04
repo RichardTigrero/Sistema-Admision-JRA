@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UE.JRA login estudiante</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/Logo_JRA.jpeg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="/cssn/styloginLogin.css" rel="stylesheet">
+</head>
+<body  class="bg-secondary">
+    <nav class="navbar navbar-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html"><button class="xd"><i class="bi bi-arrow-bar-left"></i></button></a>
+        </div>
+    </nav>
+    <section class="container d-flex justify-content-center align-items-center vh-80">
+        <div class="hola bg-white p-5 rounded-5">
+            <div class="d-flex justify-content-center">
+                <img src="../imagenes/Logo_JRA.jpeg" alt="escudo de la institucion">
+            </div >
+            <form action="inicioAdmin.php" method="post">
+                <div class="text-center fs-1 fw-bold">Login Administrador</div>
+                <div class="input-group mt-4">
+                    <div class="input-group-text bg-secondary">
+                        <i class="bi bi-person-fill "></i>
+                    </div>
+                    <input class="form-control" type="text" placeholder="username" required class="validate" autocomplete="off" name="usuario">
+                </div>
+                <div class="input-group mt-2">
+                    <div class="input-group-text bg-secondary">
+                        <i class="bi bi-key-fill"></i>
+                    </div>
+                    <input class="form-control" type="password" placeholder="password" required class="validate" autocomplete="off" name="pass">
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn bg-secondary text-white w-100" value="Ingresar" name="btningresar" >Ingresar</button>
+                </div>
+            </form>
+        </div>
+    </section> 
+</body>
+</html>
